@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7t42y3b06nqk"]
+
+[ext_resource type="PackedScene" uid="uid://ccbd8avffxjfs" path="res://Moveit/Player.tscn" id="2_y1813"]
+[ext_resource type="Script" path="res://Player.cs" id="3_5o7if"]
+[ext_resource type="Script" path="res://SledgeController.cs" id="3_fxb8i"]
+[ext_resource type="PackedScene" uid="uid://w0cac11d2qmf" path="res://Spiral Tunnel V4.blend" id="3_lvuph"]
+
+[node name="Reproduce" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999913, 0.00316206, -0.012835, -0.00998306, 0.817084, -0.576432, 0.00866457, 0.57651, 0.817044, 0.370906, -231.165, 337.773)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.752151, 0.302489, 0.585465, -0.565629, -0.159517, 0.809085, 0.338131, -0.93971, 0.0511158, 0, 291.727, 327.186)
+
+[node name="Spiral Tunnel V4" parent="." instance=ExtResource("3_lvuph")]
+transform = Transform3D(1, 0, 0, 0, 0.809017, -0.587785, 0, 0.587785, 0.809017, 0, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_y1813")]
+transform = Transform3D(-1, -4.37114e-08, 7.57103e-08, 0, 0.866025, 0.5, -8.74228e-08, 0.5, -0.866025, 0, -70.935, 102.741)
+script = ExtResource("3_5o7if")
+SledgeController = NodePath("SledgeController")
+
+[node name="SledgeController" type="Node" parent="Player"]
+script = ExtResource("3_fxb8i")
