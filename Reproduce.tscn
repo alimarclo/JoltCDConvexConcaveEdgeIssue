@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7t42y3b06nqk"]
+[gd_scene load_steps=6 format=3 uid="uid://c7t42y3b06nqk"]
 
 [ext_resource type="PackedScene" uid="uid://ccbd8avffxjfs" path="res://Moveit/Player.tscn" id="2_y1813"]
 [ext_resource type="Script" path="res://Player.cs" id="3_5o7if"]
 [ext_resource type="Script" path="res://SledgeController.cs" id="3_fxb8i"]
 [ext_resource type="PackedScene" uid="uid://w0cac11d2qmf" path="res://Spiral Tunnel V4.blend" id="3_lvuph"]
+[ext_resource type="Script" path="res://FollowCamera.cs" id="5_6higb"]
 
 [node name="Reproduce" type="Node3D"]
 
@@ -23,3 +24,9 @@ SledgeController = NodePath("SledgeController")
 
 [node name="SledgeController" type="Node" parent="Player"]
 script = ExtResource("3_fxb8i")
+
+[node name="FollowCamera" type="Camera3D" parent="."]
+transform = Transform3D(-0.999926, -0.012217, -7.08161e-08, -0.00989628, 0.809981, 0.586372, -0.00716363, 0.586329, -0.810041, -1.65601, -231.085, 339.143)
+current = true
+script = ExtResource("5_6higb")
+Player = NodePath("../Player")
