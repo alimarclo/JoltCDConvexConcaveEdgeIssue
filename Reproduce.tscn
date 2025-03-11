@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c7840gdvdb2xs" path="res://Platform Concave.blend" id="5_5vc53"]
 [ext_resource type="Script" path="res://FollowCamera.cs" id="5_6higb"]
 [ext_resource type="PackedScene" uid="uid://d28ibys7k5yh3" path="res://Platform Convex.blend" id="6_brouh"]
-[ext_resource type="PackedScene" uid="uid://dy56qrmv7o806" path="res://Sledge Mesh.blend" id="6_pgosp"]
+[ext_resource type="PackedScene" uid="uid://doyl432wfh6g8" path="res://SimpleBox.tscn" id="6_h7k21"]
 
 [node name="Reproduce" type="Node"]
 
@@ -36,7 +36,7 @@ render_target_update_mode = 4
 transform = Transform3D(-0.999925, -0.012217, -7.12817e-08, -0.00989628, 0.809981, 0.586372, -0.00716362, 0.586329, -0.810042, -1.656, -125.284, 193.52)
 current = true
 script = ExtResource("5_6higb")
-Player = NodePath("../../../../../../World/SlidingForConvex")
+Player = NodePath("../../../../../../World/SlidingForConvex2")
 
 [node name="Right" type="SubViewportContainer" parent="Layout/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -51,7 +51,7 @@ render_target_update_mode = 4
 transform = Transform3D(-0.999925, -0.012217, -7.09176e-08, -0.00989628, 0.809981, 0.586372, -0.00716362, 0.586329, -0.810042, -1.656, -125.284, 193.52)
 current = true
 script = ExtResource("5_6higb")
-Player = NodePath("../../../../../../World/SlidingForConcave")
+Player = NodePath("../../../../../../World/SlidingForConcave2")
 
 [node name="Bottom" type="SubViewportContainer" parent="Layout/VBoxContainer"]
 layout_mode = 2
@@ -96,14 +96,12 @@ transform = Transform3D(1, 0, 0, 0, 0.809017, -0.587785, 0, 0.587785, 0.809017, 
 [node name="Platform Convex" parent="World" instance=ExtResource("6_brouh")]
 transform = Transform3D(1, 0, 0, 0, 0.809017, -0.587785, 0, 0.587785, 0.809017, 0, 0, 0)
 
-[node name="SlidingForConvex" parent="World" instance=ExtResource("6_pgosp")]
+[node name="SlidingForConvex2" parent="World" instance=ExtResource("6_h7k21")]
 transform = Transform3D(-1, 5.13858e-08, -7.07265e-08, 0, 0.809017, 0.587785, 8.74228e-08, 0.587785, -0.809017, 0, 45.249, -57.365)
 continuous_cd = true
-max_contacts_reported = 2
 script = ExtResource("3_5o7if")
 
-[node name="SlidingForConcave" parent="World" instance=ExtResource("6_pgosp")]
+[node name="SlidingForConcave2" parent="World" instance=ExtResource("6_h7k21")]
 transform = Transform3D(-1, 5.13858e-08, -7.07265e-08, 0, 0.809017, 0.587785, 8.74228e-08, 0.587785, -0.809017, -30, 45.249, -57.365)
 continuous_cd = true
-max_contacts_reported = 2
 script = ExtResource("3_5o7if")
