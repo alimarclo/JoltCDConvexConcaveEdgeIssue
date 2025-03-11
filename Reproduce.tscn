@@ -125,13 +125,16 @@ transform = Transform3D(1, 0, 0, 0, 0.809017, -0.587785, 0, 0.587785, 0.809017, 
 [node name="Platform Convex" parent="World" instance=ExtResource("6_brouh")]
 transform = Transform3D(1, 0, 0, 0, 0.809017, -0.587785, 0, 0.587785, 0.809017, 0, 0, 0)
 
-[node name="SlidingForConvex" parent="World" instance=ExtResource("6_h7k21")]
-transform = Transform3D(-1, 5.13858e-08, -7.07265e-08, 0, 0.809017, 0.587785, 8.74228e-08, 0.587785, -0.809017, 0, 60, -57.365)
-continuous_cd = true
-script = ExtResource("3_5o7if")
+[node name="SimplePlatform" parent="World" instance=ExtResource("6_yoged")]
+transform = Transform3D(1, 0, 0, 0, 0.809017, -0.587785, 0, 0.587785, 0.809017, 30, 0, 0)
 
 [node name="SlidingForConcave" parent="World" instance=ExtResource("6_h7k21")]
 transform = Transform3D(-1, 5.13858e-08, -7.07265e-08, 0, 0.809017, 0.587785, 8.74228e-08, 0.587785, -0.809017, -30, 60, -57.365)
+continuous_cd = true
+script = ExtResource("3_5o7if")
+
+[node name="SlidingForConvex" parent="World" instance=ExtResource("6_h7k21")]
+transform = Transform3D(-1, 5.13858e-08, -7.07265e-08, 0, 0.809017, 0.587785, 8.74228e-08, 0.587785, -0.809017, 0, 60, -57.365)
 continuous_cd = true
 script = ExtResource("3_5o7if")
 
@@ -139,6 +142,3 @@ script = ExtResource("3_5o7if")
 transform = Transform3D(-1, 5.13858e-08, -7.07265e-08, 0, 0.809017, 0.587785, 8.74228e-08, 0.587785, -0.809017, 30, 60, -57.365)
 continuous_cd = true
 script = ExtResource("3_5o7if")
-
-[node name="SimplePlatform" parent="World" instance=ExtResource("6_yoged")]
-transform = Transform3D(1, 0, 0, 0, 0.809017, -0.587785, 0, 0.587785, 0.809017, 30, 0, 0)
