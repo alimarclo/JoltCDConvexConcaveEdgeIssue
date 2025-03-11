@@ -36,6 +36,8 @@ public partial class Player : RigidBody3D
 
         // Linear: (0.00070173637, -148.47253, 201.13654)Angular: (-7.8600826, -0.0020768414, -0.0015443421)
         ApplyForce(new Vector3(0.00070173637f, -148.47253f, 201.13654f));
+        // ApplyForce(new Vector3(0.00070173637f, -148.47253f, 201.13654f).Rotated(new Vector3(1,0,0), (float) (-36f*Math.PI/180f)));
+        // GD.Print(new Vector3(0.00070173637f, -148.47253f, 201.13654f).Rotated(new Vector3(1,0,0), (float) (-36f*Math.PI/180f)));
         // ApplyTorque(new Vector3(-7.8600826f, -0.0020768414f, -0.0015443421f));
 
 
