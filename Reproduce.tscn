@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://c7t42y3b06nqk"]
 
-[ext_resource type="PackedScene" uid="uid://ccbd8avffxjfs" path="res://Moveit/Player.tscn" id="2_y1813"]
 [ext_resource type="Script" path="res://Player.cs" id="3_5o7if"]
 [ext_resource type="PackedScene" uid="uid://c7840gdvdb2xs" path="res://Platform Concave.blend" id="5_5vc53"]
 [ext_resource type="Script" path="res://FollowCamera.cs" id="5_6higb"]
 [ext_resource type="PackedScene" uid="uid://d28ibys7k5yh3" path="res://Platform Convex.blend" id="6_brouh"]
+[ext_resource type="PackedScene" uid="uid://dy56qrmv7o806" path="res://Sledge Mesh.blend" id="6_pgosp"]
 
 [node name="Reproduce" type="Node"]
 
@@ -90,16 +90,20 @@ text = "Concave"
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
 transform = Transform3D(0.752151, 0.302489, 0.585465, -0.565629, -0.159517, 0.809085, 0.338131, -0.93971, 0.0511158, 0, 291.727, 327.186)
 
-[node name="SlidingForConcave" parent="World" instance=ExtResource("2_y1813")]
-transform = Transform3D(-1, 5.13858e-08, -7.07265e-08, 0, 0.809017, 0.587785, 8.74228e-08, 0.587785, -0.809017, -30, 45.249, -57.365)
-script = ExtResource("3_5o7if")
-
-[node name="SlidingForConvex" parent="World" instance=ExtResource("2_y1813")]
-transform = Transform3D(-1, 5.13858e-08, -7.07265e-08, 0, 0.809017, 0.587785, 8.74228e-08, 0.587785, -0.809017, 0, 45.249, -57.365)
-script = ExtResource("3_5o7if")
-
 [node name="Platform Concave" parent="World" instance=ExtResource("5_5vc53")]
 transform = Transform3D(1, 0, 0, 0, 0.809017, -0.587785, 0, 0.587785, 0.809017, -30, 0, 0)
 
 [node name="Platform Convex" parent="World" instance=ExtResource("6_brouh")]
 transform = Transform3D(1, 0, 0, 0, 0.809017, -0.587785, 0, 0.587785, 0.809017, 0, 0, 0)
+
+[node name="SlidingForConvex" parent="World" instance=ExtResource("6_pgosp")]
+transform = Transform3D(-1, 5.13858e-08, -7.07265e-08, 0, 0.809017, 0.587785, 8.74228e-08, 0.587785, -0.809017, 0, 45.249, -57.365)
+continuous_cd = true
+max_contacts_reported = 2
+script = ExtResource("3_5o7if")
+
+[node name="SlidingForConcave" parent="World" instance=ExtResource("6_pgosp")]
+transform = Transform3D(-1, 5.13858e-08, -7.07265e-08, 0, 0.809017, 0.587785, 8.74228e-08, 0.587785, -0.809017, -30, 45.249, -57.365)
+continuous_cd = true
+max_contacts_reported = 2
+script = ExtResource("3_5o7if")

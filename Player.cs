@@ -18,7 +18,7 @@ public partial class Player : RigidBody3D
     public override void _IntegrateForces(PhysicsDirectBodyState3D state)
     {
         if(_applyForce) {
-            ApplyForce(new Vector3(0.00070173637f, -148.47253f, 201.13654f));
+            ApplyForce(new Vector3(0, -15, 20));
         }
     }
 
