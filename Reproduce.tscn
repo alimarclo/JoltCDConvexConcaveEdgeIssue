@@ -2,31 +2,84 @@
 
 [ext_resource type="PackedScene" uid="uid://ccbd8avffxjfs" path="res://Moveit/Player.tscn" id="2_y1813"]
 [ext_resource type="Script" path="res://Player.cs" id="3_5o7if"]
-[ext_resource type="Script" path="res://SledgeController.cs" id="3_fxb8i"]
-[ext_resource type="PackedScene" uid="uid://w0cac11d2qmf" path="res://Spiral Tunnel V4.blend" id="3_lvuph"]
+[ext_resource type="PackedScene" uid="uid://c7840gdvdb2xs" path="res://Platform Concave.blend" id="5_5vc53"]
 [ext_resource type="Script" path="res://FollowCamera.cs" id="5_6higb"]
+[ext_resource type="PackedScene" uid="uid://d28ibys7k5yh3" path="res://Platform Convex.blend" id="6_brouh"]
 
-[node name="Reproduce" type="Node3D"]
+[node name="Reproduce" type="Node"]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.999913, 0.00316206, -0.012835, -0.0100874, 0.810031, -0.5863, 0.00854284, 0.586379, 0.809992, -1.65601, -231.085, 339.143)
+[node name="Layout" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.752151, 0.302489, 0.585465, -0.565629, -0.159517, 0.809085, 0.338131, -0.93971, 0.0511158, 0, 291.727, 327.186)
+[node name="VBoxContainer" type="VBoxContainer" parent="Layout"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Spiral Tunnel V4" parent="." instance=ExtResource("3_lvuph")]
-transform = Transform3D(1, 0, 0, 0, 0.809017, -0.587785, 0, 0.587785, 0.809017, 0, 0, 0)
+[node name="HBoxContainer" type="HBoxContainer" parent="Layout/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="Player" parent="." instance=ExtResource("2_y1813")]
-transform = Transform3D(-1, 5.13858e-08, -7.07265e-08, 0, 0.809017, 0.587785, 8.74228e-08, 0.587785, -0.809017, 0, -60.5519, 88.2577)
-script = ExtResource("3_5o7if")
-SledgeController = NodePath("SledgeController")
+[node name="Left" type="SubViewportContainer" parent="Layout/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="SledgeController" type="Node" parent="Player"]
-script = ExtResource("3_fxb8i")
+[node name="SubViewport" type="SubViewport" parent="Layout/VBoxContainer/HBoxContainer/Left"]
+handle_input_locally = false
+size = Vector2i(576, 324)
+render_target_update_mode = 4
 
-[node name="FollowCamera" type="Camera3D" parent="."]
-transform = Transform3D(-0.999926, -0.012217, -7.08161e-08, -0.00989628, 0.809981, 0.586372, -0.00716363, 0.586329, -0.810041, -1.65601, -231.085, 339.143)
+[node name="FollowCamera" type="Camera3D" parent="Layout/VBoxContainer/HBoxContainer/Left/SubViewport"]
+transform = Transform3D(-0.999925, -0.012217, -7.12817e-08, -0.00989628, 0.809981, 0.586372, -0.00716362, 0.586329, -0.810042, -1.656, -125.284, 193.52)
 current = true
 script = ExtResource("5_6higb")
-Player = NodePath("../Player")
+Player = NodePath("../../../../../../World/SlidingForConvex")
+
+[node name="Right" type="SubViewportContainer" parent="Layout/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SubViewport" type="SubViewport" parent="Layout/VBoxContainer/HBoxContainer/Right"]
+handle_input_locally = false
+size = Vector2i(576, 324)
+render_target_update_mode = 4
+
+[node name="FollowCamera" type="Camera3D" parent="Layout/VBoxContainer/HBoxContainer/Right/SubViewport"]
+transform = Transform3D(-0.999925, -0.012217, -7.09176e-08, -0.00989628, 0.809981, 0.586372, -0.00716362, 0.586329, -0.810042, -1.656, -125.284, 193.52)
+current = true
+script = ExtResource("5_6higb")
+Player = NodePath("../../../../../../World/SlidingForConcave")
+
+[node name="Bottom" type="SubViewportContainer" parent="Layout/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SubViewport" type="SubViewport" parent="Layout/VBoxContainer/Bottom"]
+handle_input_locally = false
+size = Vector2i(1152, 324)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Layout/VBoxContainer/Bottom/SubViewport"]
+transform = Transform3D(-0.449312, 0.134317, -0.88322, 0.0176872, 0.989777, 0.141524, 0.8932, 0.0479666, -0.447094, -107.59, -125.654, 194.209)
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
+transform = Transform3D(0.752151, 0.302489, 0.585465, -0.565629, -0.159517, 0.809085, 0.338131, -0.93971, 0.0511158, 0, 291.727, 327.186)
+
+[node name="SlidingForConcave" parent="World" instance=ExtResource("2_y1813")]
+transform = Transform3D(-1, 5.13858e-08, -7.07265e-08, 0, 0.809017, 0.587785, 8.74228e-08, 0.587785, -0.809017, -30, 45.249, -57.365)
+script = ExtResource("3_5o7if")
+
+[node name="SlidingForConvex" parent="World" instance=ExtResource("2_y1813")]
+transform = Transform3D(-1, 5.13858e-08, -7.07265e-08, 0, 0.809017, 0.587785, 8.74228e-08, 0.587785, -0.809017, 0, 45.249, -57.365)
+script = ExtResource("3_5o7if")
+
+[node name="Platform Concave" parent="World" instance=ExtResource("5_5vc53")]
+transform = Transform3D(1, 0, 0, 0, 0.809017, -0.587785, 0, 0.587785, 0.809017, -30, 0, 0)
+
+[node name="Platform Convex" parent="World" instance=ExtResource("6_brouh")]
+transform = Transform3D(1, 0, 0, 0, 0.809017, -0.587785, 0, 0.587785, 0.809017, 0, 0, 0)
