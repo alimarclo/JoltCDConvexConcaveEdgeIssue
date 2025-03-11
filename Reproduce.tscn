@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7t42y3b06nqk"]
+[gd_scene load_steps=7 format=3 uid="uid://c7t42y3b06nqk"]
 
 [ext_resource type="Script" path="res://Player.cs" id="3_5o7if"]
 [ext_resource type="PackedScene" uid="uid://c7840gdvdb2xs" path="res://Platform Concave.blend" id="5_5vc53"]
 [ext_resource type="Script" path="res://FollowCamera.cs" id="5_6higb"]
 [ext_resource type="PackedScene" uid="uid://d28ibys7k5yh3" path="res://Platform Convex.blend" id="6_brouh"]
 [ext_resource type="PackedScene" uid="uid://doyl432wfh6g8" path="res://SimpleBox.tscn" id="6_h7k21"]
+[ext_resource type="PackedScene" uid="uid://dy1a8fvbpy7he" path="res://SimplePlatform.tscn" id="6_yoged"]
 
 [node name="Reproduce" type="Node"]
 
@@ -19,6 +20,40 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="TopHBoxContainer" type="HBoxContainer" parent="Layout/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Left" type="SubViewportContainer" parent="Layout/VBoxContainer/TopHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SubViewport" type="SubViewport" parent="Layout/VBoxContainer/TopHBoxContainer/Left"]
+handle_input_locally = false
+size = Vector2i(576, 324)
+render_target_update_mode = 4
+
+[node name="FollowCamera" type="Camera3D" parent="Layout/VBoxContainer/TopHBoxContainer/Left/SubViewport"]
+transform = Transform3D(-0.999925, -0.012217, -7.12817e-08, -0.00989628, 0.809981, 0.586372, -0.00716362, 0.586329, -0.810042, -1.656, -125.284, 193.52)
+current = true
+script = ExtResource("5_6higb")
+Player = NodePath("../../../../../../World/SlidingForConvex2")
+
+[node name="Right" type="SubViewportContainer" parent="Layout/VBoxContainer/TopHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SubViewport" type="SubViewport" parent="Layout/VBoxContainer/TopHBoxContainer/Right"]
+handle_input_locally = false
+size = Vector2i(576, 324)
+render_target_update_mode = 4
+
+[node name="FollowCamera" type="Camera3D" parent="Layout/VBoxContainer/TopHBoxContainer/Right/SubViewport"]
+transform = Transform3D(-0.999925, -0.012217, -7.09176e-08, -0.00989628, 0.809981, 0.586372, -0.00716362, 0.586329, -0.810042, -1.656, -125.284, 193.52)
+current = true
+script = ExtResource("5_6higb")
+Player = NodePath("../../../../../../World/SlidingForConcave2")
+
 [node name="HBoxContainer" type="HBoxContainer" parent="Layout/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
@@ -32,37 +67,21 @@ handle_input_locally = false
 size = Vector2i(576, 324)
 render_target_update_mode = 4
 
-[node name="FollowCamera" type="Camera3D" parent="Layout/VBoxContainer/HBoxContainer/Left/SubViewport"]
-transform = Transform3D(-0.999925, -0.012217, -7.12817e-08, -0.00989628, 0.809981, 0.586372, -0.00716362, 0.586329, -0.810042, -1.656, -125.284, 193.52)
+[node name="FollowCamera2" type="Camera3D" parent="Layout/VBoxContainer/HBoxContainer/Left/SubViewport"]
+transform = Transform3D(-0.999925, -0.012217, -7.93092e-08, -0.00989628, 0.809981, 0.586373, -0.00716362, 0.586329, -0.810041, -1.656, -125.284, 193.52)
 current = true
 script = ExtResource("5_6higb")
-Player = NodePath("../../../../../../World/SlidingForConvex2")
+Player = NodePath("../../../../../../World/SlidingForConcave3")
 
 [node name="Right" type="SubViewportContainer" parent="Layout/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="SubViewport" type="SubViewport" parent="Layout/VBoxContainer/HBoxContainer/Right"]
 handle_input_locally = false
 size = Vector2i(576, 324)
 render_target_update_mode = 4
 
-[node name="FollowCamera" type="Camera3D" parent="Layout/VBoxContainer/HBoxContainer/Right/SubViewport"]
-transform = Transform3D(-0.999925, -0.012217, -7.09176e-08, -0.00989628, 0.809981, 0.586372, -0.00716362, 0.586329, -0.810042, -1.656, -125.284, 193.52)
-current = true
-script = ExtResource("5_6higb")
-Player = NodePath("../../../../../../World/SlidingForConcave2")
-
-[node name="Bottom" type="SubViewportContainer" parent="Layout/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="SubViewport" type="SubViewport" parent="Layout/VBoxContainer/Bottom"]
-handle_input_locally = false
-size = Vector2i(1152, 324)
-render_target_update_mode = 4
-
-[node name="Camera3D" type="Camera3D" parent="Layout/VBoxContainer/Bottom/SubViewport"]
+[node name="Camera3D" type="Camera3D" parent="Layout/VBoxContainer/HBoxContainer/Right/SubViewport"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -107.59, -132.7, 210.859)
 projection = 1
 size = 60.0
@@ -85,6 +104,16 @@ offset_bottom = 318.0
 theme_override_font_sizes/font_size = 36
 text = "Concave"
 
+[node name="Box Shape" type="Label" parent="Layout"]
+layout_mode = 2
+offset_left = 194.0
+offset_top = 590.0
+offset_right = 376.0
+offset_bottom = 640.0
+theme_override_font_sizes/font_size = 36
+text = "Box Shape
+"
+
 [node name="World" type="Node3D" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
@@ -97,11 +126,19 @@ transform = Transform3D(1, 0, 0, 0, 0.809017, -0.587785, 0, 0.587785, 0.809017, 
 transform = Transform3D(1, 0, 0, 0, 0.809017, -0.587785, 0, 0.587785, 0.809017, 0, 0, 0)
 
 [node name="SlidingForConvex2" parent="World" instance=ExtResource("6_h7k21")]
-transform = Transform3D(-1, 5.13858e-08, -7.07265e-08, 0, 0.809017, 0.587785, 8.74228e-08, 0.587785, -0.809017, 0, 45.249, -57.365)
+transform = Transform3D(-1, 5.13858e-08, -7.07265e-08, 0, 0.809017, 0.587785, 8.74228e-08, 0.587785, -0.809017, 0, 60, -57.365)
 continuous_cd = true
 script = ExtResource("3_5o7if")
 
 [node name="SlidingForConcave2" parent="World" instance=ExtResource("6_h7k21")]
-transform = Transform3D(-1, 5.13858e-08, -7.07265e-08, 0, 0.809017, 0.587785, 8.74228e-08, 0.587785, -0.809017, -30, 45.249, -57.365)
+transform = Transform3D(-1, 5.13858e-08, -7.07265e-08, 0, 0.809017, 0.587785, 8.74228e-08, 0.587785, -0.809017, -30, 60, -57.365)
 continuous_cd = true
 script = ExtResource("3_5o7if")
+
+[node name="SlidingForConcave3" parent="World" instance=ExtResource("6_h7k21")]
+transform = Transform3D(-1, 5.13858e-08, -7.07265e-08, 0, 0.809017, 0.587785, 8.74228e-08, 0.587785, -0.809017, 30, 60, -57.365)
+continuous_cd = true
+script = ExtResource("3_5o7if")
+
+[node name="SimplePlatform" parent="World" instance=ExtResource("6_yoged")]
+transform = Transform3D(1, 0, 0, 0, 0.809017, -0.587785, 0, 0.587785, 0.809017, 30, 0, 0)
