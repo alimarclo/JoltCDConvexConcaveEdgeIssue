@@ -23,6 +23,3 @@ SledgeController = NodePath("SledgeController")
 
 [node name="SledgeController" type="Node" parent="Player"]
 script = ExtResource("3_fxb8i")
-
-[node name="Spiral Tunnel V5" parent="." instance=ExtResource("3_lvuph")]
-transform = Transform3D(1, 0, 0, 0, 0.809017, -0.587785, 0, 0.587785, 0.809017, 0, -424.187, 582.492)
