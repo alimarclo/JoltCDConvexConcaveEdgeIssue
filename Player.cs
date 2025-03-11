@@ -11,7 +11,7 @@ public partial class Player : RigidBody3D
     {
         GetTree().CreateTimer(4.5).Timeout += () => {
             _applyForce = false;
-            GD.Print("Stopped pushing");
+            GD.Print($"Stopped pushing, max speed is {LinearVelocity.Length()}");
         };
     }
 
