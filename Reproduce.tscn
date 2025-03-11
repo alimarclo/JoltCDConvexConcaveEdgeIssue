@@ -37,7 +37,7 @@ render_target_update_mode = 4
 transform = Transform3D(-0.999925, -0.012217, -7.12817e-08, -0.00989628, 0.809981, 0.586372, -0.00716362, 0.586329, -0.810042, -1.656, -125.284, 193.52)
 current = true
 script = ExtResource("5_6higb")
-Player = NodePath("../../../../../../World/SlidingForConvex2")
+Player = NodePath("../../../../../../World/SlidingForConvex")
 
 [node name="Right" type="SubViewportContainer" parent="Layout/VBoxContainer/TopHBoxContainer"]
 layout_mode = 2
@@ -52,7 +52,7 @@ render_target_update_mode = 4
 transform = Transform3D(-0.999925, -0.012217, -7.09176e-08, -0.00989628, 0.809981, 0.586372, -0.00716362, 0.586329, -0.810042, -1.656, -125.284, 193.52)
 current = true
 script = ExtResource("5_6higb")
-Player = NodePath("../../../../../../World/SlidingForConcave2")
+Player = NodePath("../../../../../../World/SlidingForConcave")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Layout/VBoxContainer"]
 layout_mode = 2
@@ -71,7 +71,7 @@ render_target_update_mode = 4
 transform = Transform3D(-0.999925, -0.012217, -7.93092e-08, -0.00989628, 0.809981, 0.586373, -0.00716362, 0.586329, -0.810041, -1.656, -125.284, 193.52)
 current = true
 script = ExtResource("5_6higb")
-Player = NodePath("../../../../../../World/SlidingForConcave3")
+Player = NodePath("../../../../../../World/SlidingForBoxShape")
 
 [node name="Right" type="SubViewportContainer" parent="Layout/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -125,17 +125,17 @@ transform = Transform3D(1, 0, 0, 0, 0.809017, -0.587785, 0, 0.587785, 0.809017, 
 [node name="Platform Convex" parent="World" instance=ExtResource("6_brouh")]
 transform = Transform3D(1, 0, 0, 0, 0.809017, -0.587785, 0, 0.587785, 0.809017, 0, 0, 0)
 
-[node name="SlidingForConvex2" parent="World" instance=ExtResource("6_h7k21")]
+[node name="SlidingForConvex" parent="World" instance=ExtResource("6_h7k21")]
 transform = Transform3D(-1, 5.13858e-08, -7.07265e-08, 0, 0.809017, 0.587785, 8.74228e-08, 0.587785, -0.809017, 0, 60, -57.365)
 continuous_cd = true
 script = ExtResource("3_5o7if")
 
-[node name="SlidingForConcave2" parent="World" instance=ExtResource("6_h7k21")]
+[node name="SlidingForConcave" parent="World" instance=ExtResource("6_h7k21")]
 transform = Transform3D(-1, 5.13858e-08, -7.07265e-08, 0, 0.809017, 0.587785, 8.74228e-08, 0.587785, -0.809017, -30, 60, -57.365)
 continuous_cd = true
 script = ExtResource("3_5o7if")
 
-[node name="SlidingForConcave3" parent="World" instance=ExtResource("6_h7k21")]
+[node name="SlidingForBoxShape" parent="World" instance=ExtResource("6_h7k21")]
 transform = Transform3D(-1, 5.13858e-08, -7.07265e-08, 0, 0.809017, 0.587785, 8.74228e-08, 0.587785, -0.809017, 30, 60, -57.365)
 continuous_cd = true
 script = ExtResource("3_5o7if")
